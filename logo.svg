@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" fill="none">
+  <!-- Leaf -->
+  <g stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 4C8 10 4 20 6 34c3-5 7-8 12-9"/>
+    <path d="M16 4c4 5 6 12 5 19"/>
+    <path d="M21 23c-5 1-10 5-13 11"/>
+    <path d="M9 30c3-4 7-7 12-8"/>
+  </g>
+  <!-- Text -->
+  <text x="38" y="28" font-family="Outfit, system-ui, sans-serif" font-weight="600" font-size="22" fill="white" letter-spacing="-0.5">NurtureFlow</text>
+</svg>
