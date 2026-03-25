@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nurtureflow — Sluit Meer Offertes Zonder Extra Werk</title>
-  <meta name="description" content="De Offerte-Assistent volgt jouw offertes automatisch en persoonlijk op via WhatsApp en e-mail. Voor keuken- en badkamerrenovatiebedrijven in Nederland.">
+  <title>NurtureFlow — De Comeback Campagne voor Sportscholen</title>
+  <meta name="description" content="Heractiveer jouw oud-leden en koude leads via WhatsApp. Betaal alleen per geboekte afspraak. Geen retainer, geen risico.">
   <link rel="icon" type="image/png" href="favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Scroll-triggered fade-in animations */
+    /* Scroll-triggered fade-in */
     .fade-up {
       opacity: 0;
       transform: translateY(32px);
@@ -49,7 +49,6 @@
       transform: translateY(0);
     }
 
-    /* Stagger children */
     .stagger-1 { transition-delay: 0.05s; }
     .stagger-2 { transition-delay: 0.1s; }
     .stagger-3 { transition-delay: 0.15s; }
@@ -59,7 +58,7 @@
     .stagger-7 { transition-delay: 0.35s; }
     .stagger-8 { transition-delay: 0.4s; }
 
-    /* CTA button hover */
+    /* CTA button */
     .cta-btn {
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
@@ -73,7 +72,6 @@
       transform: translateY(0) scale(0.98);
     }
 
-    /* Subtle pulse for trust indicators */
     @keyframes subtle-pulse {
       0%, 100% { opacity: 0.6; }
       50% { opacity: 1; }
@@ -82,7 +80,6 @@
       animation: subtle-pulse 2.5s ease-in-out infinite;
     }
 
-    /* Gradient line animation */
     @keyframes gradient-shift {
       0% { background-position: 0% 50%; }
       100% { background-position: 200% 50%; }
@@ -93,12 +90,12 @@
       animation: gradient-shift 3s linear infinite;
     }
 
-    /* Comparison table row hover */
+    /* Comparison highlight */
     .compare-row {
-      transition: background-color 0.2s ease;
+      transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .compare-row:hover {
-      background-color: rgba(59, 130, 246, 0.04);
+      background-color: rgba(59, 130, 246, 0.06);
     }
 
     /* FAQ accordion */
@@ -127,302 +124,403 @@
       transform: translateY(0);
     }
 
-    /* Card hover lift */
-    .card-hover {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      border-color: rgba(59, 130, 246, 0.3);
+    /* Winner column glow */
+    .winner-col {
+      box-shadow: inset 0 1px 0 rgba(59, 130, 246, 0.2), 0 0 40px -12px rgba(59, 130, 246, 0.15);
     }
 
-    /* Number counter animation */
-    @keyframes count-up {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Liquid glass card treatment */
+    .glass-card {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 20px 40px -15px rgba(0, 0, 0, 0.3);
     }
 
-    /* Smooth step connector line */
-    .step-line {
-      background: linear-gradient(to bottom, #3b82f6, transparent);
+    /* WhatsApp chat bubbles */
+    .chat-bubble-in {
+      background: #1e2030;
+      border-radius: 16px 16px 16px 4px;
+    }
+    .chat-bubble-out {
+      background: #054640;
+      border-radius: 16px 16px 4px 16px;
+    }
+    @keyframes bubble-in-1 {
+      0%, 10% { opacity: 0; transform: translateY(12px); }
+      20%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bubble-in-2 {
+      0%, 35% { opacity: 0; transform: translateY(12px); }
+      45%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bubble-in-3 {
+      0%, 55% { opacity: 0; transform: translateY(12px); }
+      65%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bubble-in-4 {
+      0%, 72% { opacity: 0; transform: translateY(12px); }
+      82%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    .chat-anim-1 { animation: bubble-in-1 6s ease-out both; }
+    .chat-anim-2 { animation: bubble-in-2 6s ease-out both; }
+    .chat-anim-3 { animation: bubble-in-3 6s ease-out both; }
+    .chat-anim-4 { animation: bubble-in-4 6s ease-out both; }
+
+    /* Typing indicator */
+    @keyframes typing-dot {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-3px); }
+    }
+    .typing-dot-1 { animation: typing-dot 1.4s ease-in-out infinite; }
+    .typing-dot-2 { animation: typing-dot 1.4s ease-in-out 0.2s infinite; }
+    .typing-dot-3 { animation: typing-dot 1.4s ease-in-out 0.4s infinite; }
+
+    /* Animated number counter */
+    .counter-value {
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+    .counter-value.counting {
+      animation: count-tick 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes count-tick {
+      0% { transform: translateY(8px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Marquee */
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      animation: marquee-scroll 30s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Timeline connector */
+    .timeline-connector {
+      background: linear-gradient(to bottom, #3b82f6 0%, rgba(59, 130, 246, 0.1) 100%);
     }
   </style>
 </head>
 <body class="bg-surface-950 text-slate-200 font-sans antialiased">
 
+  <!-- Grain overlay -->
+  <div class="fixed inset-0 z-50 pointer-events-none opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+
   <!-- ============================================ -->
   <!-- NAV                                          -->
   <!-- ============================================ -->
-  <nav class="fixed top-0 left-0 right-0 z-40 bg-surface-950/80 backdrop-blur-md border-b border-slate-800/50">
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-surface-950/80 backdrop-blur-md border-b border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
       <img src="nurtureflow-logo.svg" alt="NurtureFlow" class="h-7">
-      <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="hidden sm:inline-flex cta-btn items-center gap-2 bg-accent hover:bg-accent-dark text-white font-medium px-5 py-2 rounded-lg text-sm">
-        Plan Mijn Demo
+      <a href="#gesprek" class="hidden sm:inline-flex cta-btn items-center gap-2 bg-accent hover:bg-accent-dark text-white font-medium px-5 py-2 rounded-lg text-sm">
+        Plan Gratis Gesprek
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
     </div>
   </nav>
 
+
   <!-- ============================================ -->
   <!-- SECTION 1: ABOVE THE FOLD                    -->
   <!-- ============================================ -->
   <section class="min-h-[100dvh] relative flex items-center overflow-hidden">
-    <!-- Subtle background gradient -->
     <div class="absolute inset-0 bg-gradient-to-br from-surface-950 via-surface-950 to-blue-950/20"></div>
-    <!-- Grain overlay -->
-    <div class="fixed inset-0 z-50 pointer-events-none opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
 
-    <div class="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+    <div class="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
         <!-- Left: Copy -->
         <div>
-          <!-- Eyebrow -->
           <div class="fade-up flex items-center gap-2 mb-6">
             <span class="pulse-dot inline-block w-2 h-2 rounded-full bg-accent"></span>
-            <span class="text-sm text-accent font-medium tracking-wide uppercase">Voor keuken- &amp; badkamerrenovatiebedrijven</span>
+            <span class="text-sm text-accent font-medium tracking-wide uppercase">Voor onafhankelijke sportscholen in Nederland</span>
           </div>
 
-          <!-- Headline -->
-          <h1 class="fade-up stagger-1 text-4xl md:text-5xl lg:text-[3.25rem] font-800 tracking-tighter leading-none text-white mb-6">
-            Stop met offertes verliezen door<br>
-            <span class="text-accent">slechte opvolging</span>
+          <h1 class="fade-up stagger-1 text-4xl md:text-5xl lg:text-[3.25rem] font-800 tracking-tighter leading-[1.05] text-white mb-6">
+            Jouw oud-leden willen terugkomen.<br>
+            <span class="text-accent">Wij boeken ze in.</span>
           </h1>
 
-          <!-- Subheadline -->
           <p class="fade-up stagger-2 text-lg md:text-xl text-slate-400 leading-relaxed mb-8 max-w-[50ch]">
-            De Offerte-Assistent volgt jouw offertes automatisch op, beantwoordt vragen van klanten, en geeft jou een seintje op het juiste moment. Zodat jij meer projecten sluit zonder extra werk.
+            De Comeback Campagne heractiveert jouw slapende database via persoonlijke WhatsApp-berichten. Geen spam. Geen advertentiekosten. Jij betaalt alleen per geboekte afspraak.
           </p>
 
+          <!-- Bullet proof points -->
+          <div class="fade-up stagger-3 flex flex-col gap-3 mb-10">
+            <div class="flex items-center gap-3 text-slate-300">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Geen kosten vooraf, geen retainer</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-300">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Eerste afspraken binnen 14 dagen</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-300">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>90-98% open rate via WhatsApp</span>
+            </div>
+          </div>
+
           <!-- CTA -->
-          <div class="fade-up stagger-3">
-            <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
-              <span>Plan Mijn Demo</span>
+          <div class="fade-up stagger-4">
+            <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+              Claim Je Gratis Strategiegesprek
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <!-- Trust line -->
-            <div class="flex items-center gap-4 mt-4 text-sm text-slate-500">
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Gratis
-              </span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                15 minuten
-              </span>
-              <span class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Vrijblijvend
-              </span>
-            </div>
+            <p class="text-sm text-slate-500 mt-3">15 minuten — Geen verplichtingen — Gratis database-analyse</p>
           </div>
         </div>
 
-        <!-- Right: Visual -->
-        <div class="fade-up stagger-4 hidden lg:block">
+        <!-- Right: WhatsApp conversation mockup -->
+        <div class="fade-up stagger-5 hidden lg:block">
           <div class="relative">
+            <!-- Phone shell -->
+            <div class="bg-surface-800 glass-card rounded-[2rem] p-1 max-w-[360px] ml-auto">
+              <!-- WhatsApp header -->
+              <div class="bg-surface-700 rounded-t-[1.75rem] px-5 py-4 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+                </div>
+                <div>
+                  <p class="text-white text-sm font-semibold">FitZone Amsterdam</p>
+                  <p class="text-slate-500 text-xs">online</p>
+                </div>
+              </div>
 
-            <!-- ELEMENT 1: WhatsApp Preview (smaller, faded) -->
-            <div class="opacity-70 mb-4">
-              <div class="bg-surface-800 border border-slate-700/50 rounded-2xl p-4">
-                <!-- Mini WhatsApp header -->
-                <div class="flex items-center gap-2 mb-3 pb-2.5 border-b border-slate-700/50">
-                  <div class="w-7 h-7 rounded-full bg-emerald-600/20 flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.556-.764-6.343-2.088l-.456-.344-2.636.884.884-2.636-.344-.456A9.956 9.956 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                  </div>
-                  <div>
-                    <p class="text-white font-medium text-xs">De Offerte-Assistent</p>
-                    <p class="text-emerald-400 text-[10px]">Actief</p>
+              <!-- Chat area -->
+              <div class="bg-surface-900 px-4 py-5 space-y-3 min-h-[320px]">
+                <!-- Outbound message (NurtureFlow → ex-lid) -->
+                <div class="flex justify-end chat-anim-1">
+                  <div class="chat-bubble-out px-4 py-2.5 max-w-[85%]">
+                    <p class="text-sm text-slate-200 leading-relaxed">Hey Marieke! Hoe gaat het? We merkten dat je al een tijdje niet meer bij FitZone bent geweest. We missen je! 💪 Heb je zin om een keer langs te komen voor een gratis proefweek?</p>
+                    <p class="text-[10px] text-slate-500 text-right mt-1">09:14</p>
                   </div>
                 </div>
-                <!-- Chat bubbles -->
-                <div class="space-y-2">
-                  <div class="flex justify-start">
-                    <div class="bg-surface-700 border border-slate-600/30 text-slate-200 rounded-xl rounded-tl-sm px-3 py-2 max-w-[320px] text-xs leading-relaxed">
-                      <p>De levertijd van de tegels is 2 tot 3 weken na opdracht. Had u verder nog vragen over de offerte?</p>
-                      <p class="text-slate-500 text-[10px] mt-1">Automatisch verstuurd &middot; 10 min geleden</p>
+
+                <!-- Typing indicator -->
+                <div class="flex justify-start chat-anim-2">
+                  <div class="chat-bubble-in px-4 py-3">
+                    <div class="flex gap-1.5">
+                      <span class="typing-dot-1 w-2 h-2 rounded-full bg-slate-500 inline-block"></span>
+                      <span class="typing-dot-2 w-2 h-2 rounded-full bg-slate-500 inline-block"></span>
+                      <span class="typing-dot-3 w-2 h-2 rounded-full bg-slate-500 inline-block"></span>
                     </div>
                   </div>
-                  <div class="flex justify-end">
-                    <div class="bg-emerald-700/30 border border-emerald-600/20 text-slate-200 rounded-xl rounded-tr-sm px-3 py-2 max-w-[320px] text-xs leading-relaxed">
-                      Nee, je hebt alles duidelijk gemaakt. Wanneer kunnen jullie beginnen?
-                    </div>
+                </div>
+
+                <!-- Inbound reply -->
+                <div class="flex justify-start chat-anim-3">
+                  <div class="chat-bubble-in px-4 py-2.5 max-w-[85%]">
+                    <p class="text-sm text-slate-200 leading-relaxed">Heyy! Ja ik dacht er laatst nog aan. Was gewoon druk met werk. Een proefweek klinkt goed, wanneer kan ik langskomen?</p>
+                    <p class="text-[10px] text-slate-500 mt-1">09:16</p>
+                  </div>
+                </div>
+
+                <!-- Confirmation -->
+                <div class="flex justify-end chat-anim-4">
+                  <div class="chat-bubble-out px-4 py-2.5 max-w-[85%]">
+                    <p class="text-sm text-slate-200 leading-relaxed">Top! Ik plan je in voor donderdag 18:00. Tot dan! 🙌</p>
+                    <p class="text-[10px] text-slate-500 text-right mt-1">09:17</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- ELEMENT 2: Escalation Card (prominent) -->
-            <div class="bg-surface-800 border border-slate-700/50 rounded-2xl p-5 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)]">
-              <!-- Header: name -->
-              <div class="mb-4">
-                <h4 class="text-white font-semibold text-lg">Jan de Vries</h4>
-              </div>
-
-              <!-- Badges row -->
-              <div class="flex items-center gap-3 mb-4">
-                <span class="inline-flex items-center gap-1.5 bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium px-2.5 py-1 rounded-lg">
-                  <span class="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
-                  Hoog
-                </span>
-                <span class="text-slate-500 text-xs">2 uur geleden</span>
-              </div>
-
-              <!-- Reason -->
-              <div class="mb-5">
-                <p class="text-slate-500 text-[10px] font-medium tracking-wider uppercase mb-1.5">Reden</p>
-                <p class="text-orange-400 text-sm leading-relaxed">Jan vraagt wanneer er gestart kan worden met de renovatie.</p>
-              </div>
-
-              <!-- Action buttons -->
-              <div class="flex items-center gap-3">
-                <div class="flex-1 bg-white/10 border border-slate-600/30 text-white text-sm font-medium py-2.5 rounded-xl text-center">
-                  Open gesprek
+              <!-- Bottom bar -->
+              <div class="bg-surface-700 rounded-b-[1.75rem] px-4 py-3 flex items-center gap-3">
+                <div class="flex-1 bg-surface-800 rounded-full px-4 py-2">
+                  <p class="text-xs text-slate-600">Typ een bericht...</p>
                 </div>
-                <div class="flex-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium py-2.5 rounded-xl flex items-center justify-center gap-1.5">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-                  Bellen
+                <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
                 </div>
               </div>
             </div>
 
-            <!-- Floating badge -->
-            <div class="absolute -top-3 -right-3 bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm rounded-full px-3.5 py-2 shadow-lg">
-              <div class="flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-xs text-white font-medium">Offerte geaccepteerd</span>
+            <!-- Floating result badge -->
+            <div class="absolute -bottom-5 -left-4 bg-accent/10 border border-accent/20 rounded-xl px-5 py-3 backdrop-blur-sm glass-card">
+              <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-green-400 pulse-dot"></span>
+                <span class="text-sm text-slate-300">Afspraak geboekt <strong class="text-white">binnen 3 min</strong></span>
               </div>
             </div>
-
           </div>
         </div>
+
       </div>
     </div>
   </section>
+
+
+  <!-- ============================================ -->
+  <!-- MARQUEE TRUST BAR                            -->
+  <!-- ============================================ -->
+  <div class="relative border-y border-white/[0.04] py-4 overflow-hidden bg-surface-900/50">
+    <div class="marquee-track flex items-center gap-10 whitespace-nowrap w-max">
+      <span class="text-sm text-slate-500 font-medium tracking-wide">97% van Nederland zit op WhatsApp</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">90-98% open rate</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">5-10x goedkoper dan nieuwe leads</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">Resultaat binnen 14 dagen</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">Betaal alleen per afspraak</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">Geen contract of retainer</span>
+      <span class="text-slate-700">/</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="text-sm text-slate-500 font-medium tracking-wide">97% van Nederland zit op WhatsApp</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">90-98% open rate</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">5-10x goedkoper dan nieuwe leads</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">Resultaat binnen 14 dagen</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">Betaal alleen per afspraak</span>
+      <span class="text-slate-700">/</span>
+      <span class="text-sm text-slate-500 font-medium tracking-wide">Geen contract of retainer</span>
+      <span class="text-slate-700">/</span>
+    </div>
+  </div>
 
 
   <!-- ============================================ -->
   <!-- SECTION 2: THE LEAD (PAS)                    -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-32 relative">
+  <section class="relative py-20 md:py-28">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
+      <div class="max-w-[720px]">
 
         <!-- Problem -->
-        <div class="fade-up mb-12">
-          <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Het probleem</p>
-          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white leading-tight mb-6">
-            Je stuurt offertes, maar hoort daarna niets meer
+        <div class="fade-up mb-10">
+          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white mb-6">
+            Jouw sportschool lekt leden. En niemand vangt ze op.
           </h2>
-          <p class="text-slate-400 text-lg leading-relaxed max-w-[65ch]">
-            Je hebt het druk. Projecten lopen, klanten bellen, materiaal moet besteld worden. Ondertussen liggen er offertes te wachten op opvolging. Je weet dat je moet nabellen, maar het schiet er steeds bij in.
+          <p class="text-lg text-slate-400 leading-relaxed">
+            Elk jaar verlies je 30-40% van je ledenbestand. Ondertussen heb je honderden oud-leden en leads in je systeem die nooit meer iets van je gehoord hebben. Ze zijn niet vertrokken omdat ze je sportschool niet goed vonden — ze werden druk, verhuisden, of het kwam even niet uit.
           </p>
         </div>
 
-        <!-- Agitate -->
-        <div class="fade-up mb-12 pl-6 border-l-2 border-accent/30">
-          <p class="text-slate-400 text-lg leading-relaxed max-w-[65ch]">
-            En elke dag dat je niet opvolgt, wordt de kans kleiner. Die klant die enthousiast was na het gesprek? Die heeft inmiddels ook twee andere offertes ontvangen. De concurrent die w&eacute;l dezelfde avond nog een berichtje stuurde? Die heeft de klus al binnen. Niet omdat zijn prijs beter was. Maar omdat hij sneller was.
+        <!-- Agitate with loss calculator -->
+        <div class="fade-up mb-10">
+          <p class="text-lg text-slate-400 leading-relaxed mb-6">
+            Maar jij hebt geen tijd om ze allemaal op te volgen. Dus probeer je het met e-mails die niemand opent. Of je gooit weer honderden euro's in Meta-advertenties voor koude leads die niet komen opdagen.
           </p>
-          <p class="text-slate-400 text-lg leading-relaxed max-w-[65ch] mt-4">
-            Hoeveel projecten ben je de afgelopen maanden kwijtgeraakt, simpelweg omdat je te laat was met opvolgen? Twee? Vier? Bij een gemiddelde keukenrenovatie van &euro;15.000 is dat al snel &euro;30.000 tot &euro;60.000 aan misgelopen omzet.
+
+          <!-- Concrete loss calculator -->
+          <div class="bg-surface-800 glass-card rounded-xl p-6 mb-6">
+            <p class="text-sm text-accent font-semibold uppercase tracking-wider mb-4">Reken even mee</p>
+            <div class="space-y-2 text-slate-300">
+              <div class="flex justify-between items-baseline">
+                <span>Ledenbestand</span>
+                <span class="text-white font-semibold">500 leden</span>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <span>Jaarlijks verloop (35%)</span>
+                <span class="text-white font-semibold">~175 leden weg</span>
+              </div>
+              <div class="flex justify-between items-baseline">
+                <span>Gemiddelde waarde per lid</span>
+                <span class="text-white font-semibold">&euro;700</span>
+              </div>
+              <div class="h-px bg-slate-700/50 my-3"></div>
+              <div class="flex justify-between items-baseline">
+                <span class="text-white font-semibold">Omzet die jaarlijks wegloopt</span>
+                <span class="text-2xl font-800 text-accent">&euro;122.500</span>
+              </div>
+            </div>
+            <p class="text-sm text-slate-500 mt-4">En het merendeel van die 175 mensen zit nog gewoon in je database. Ze wachten alleen op een berichtje.</p>
+          </div>
+
+          <p class="text-lg text-slate-400 leading-relaxed">
+            Het is alsof je een restaurant runt waar vaste gasten stoppen met komen — en je belt ze nooit even op om te vragen of ze terugkomen. Terwijl je ondertussen duizenden uitgeeft aan flyers voor mensen die je nog nooit ontmoet hebben.
           </p>
         </div>
 
-        <!-- Solution -->
+        <!-- Animated divider -->
+        <div class="h-px animated-line mb-10"></div>
+
+        <!-- Solution — focused on after-state -->
         <div class="fade-up">
-          <h3 class="text-2xl md:text-3xl font-700 tracking-tight text-white leading-tight mb-4">
-            Stel je voor dat elke offerte automatisch wordt opgevolgd
+          <h3 class="text-2xl md:text-3xl font-700 tracking-tight text-white mb-6">
+            Stel je voor: je agenda stroomt vol. Zonder een cent aan advertenties.
           </h3>
-          <p class="text-slate-400 text-lg leading-relaxed max-w-[65ch] mb-4">
-            Persoonlijk. Via WhatsApp. Binnen een uur na verzending. Zonder dat jij er iets voor hoeft te doen. En als de klant vragen heeft? Dan worden die beantwoord. Moet er echt iemand bellen? Dan krijg jij een seintje op precies het juiste moment.
+          <p class="text-lg text-slate-400 leading-relaxed mb-4">
+            Je opent maandagochtend je agenda en ziet 12 nieuwe afspraken staan. Allemaal oud-leden die je sportschool al kennen. Ze hoeven geen rondleiding, geen verkooppraatje — ze willen gewoon terugkomen. Jij voert een kort gesprek, ze tekenen, en je ledenbestand groeit. Zonder dat je zelf iemand hebt hoeven bellen of mailen.
           </p>
-          <p class="text-white text-lg font-medium max-w-[65ch]">
-            Dat is precies wat De Offerte-Assistent voor je doet.
+          <p class="text-lg text-slate-400 leading-relaxed mb-8">
+            Dat is wat De Comeback Campagne doet. Wij benaderen jouw slapende database via persoonlijke WhatsApp-berichten — het enige kanaal met 90-98% open rate — en boeken gemotiveerde oud-leden terug als afspraken in jouw agenda.
           </p>
-        </div>
 
-        <!-- CTA -->
-        <div class="fade-up mt-10">
-          <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
-            Plan Mijn Demo
+          <!-- CTA -->
+          <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+            Ontdek Wat Jouw Database Waard Is
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
+          <p class="text-sm text-slate-500 mt-3">Gratis gesprek van 15 min — geen verplichtingen</p>
         </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- Animated divider -->
-  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="h-px animated-line"></div>
-  </div>
-
-
   <!-- ============================================ -->
-  <!-- SECTION 3: SOCIAL PROOF — FIRST WAVE         -->
+  <!-- SECTION 3: SOCIAL PROOF — INDUSTRY DATA      -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-28">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="fade-up text-center mb-16">
-        <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Resultaten</p>
-        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white">
-          Wat renovatiebedrijven bereiken met De Offerte-Assistent
+      <div class="fade-up mb-14">
+        <p class="text-sm text-accent font-medium uppercase tracking-wider mb-3">De cijfers liegen niet</p>
+        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white max-w-[600px]">
+          Waarom jouw database je meest waardevolle bezit is
         </h2>
       </div>
 
-      <!-- Stats row -->
-      <div class="fade-up grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Stat 1 -->
-        <div class="bg-surface-800/50 border border-slate-700/40 rounded-2xl p-8 text-center card-hover">
-          <p class="text-4xl md:text-5xl font-800 text-accent tracking-tight mb-2">100%</p>
-          <p class="text-slate-400">van je offertes wordt opgevolgd</p>
-          <p class="text-xs text-slate-600 mt-1">automatisch, binnen 1 uur</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-800/30 rounded-2xl overflow-hidden border border-white/[0.04]">
+
+        <div class="fade-up stagger-1 bg-surface-900 p-8 md:p-10">
+          <p class="text-4xl md:text-5xl font-800 tracking-tight text-accent mb-2" data-counter="5" data-prefix="€" data-suffix="-25">
+            <span class="counter-value">&euro;5-25</span>
+          </p>
+          <p class="text-white font-semibold mb-1">om een oud-lid terug te winnen</p>
+          <p class="text-sm text-slate-500">Tegenover &euro;50-150 voor een compleet nieuw lid via advertenties. Dat is 5-10x goedkoper.</p>
         </div>
-        <!-- Stat 2 -->
-        <div class="bg-surface-800/50 border border-slate-700/40 rounded-2xl p-8 text-center card-hover">
-          <p class="text-4xl md:text-5xl font-800 text-accent tracking-tight mb-2">2&ndash;4</p>
-          <p class="text-slate-400">extra projecten per maand</p>
-          <p class="text-xs text-slate-600 mt-1">bij 20-40 offertes per maand</p>
+
+        <div class="fade-up stagger-2 bg-surface-900 p-8 md:p-10">
+          <p class="text-4xl md:text-5xl font-800 tracking-tight text-accent mb-2">
+            <span class="counter-value" data-count-to="80" data-count-suffix="%" data-count-prefix="60-">60-80%</span>
+          </p>
+          <p class="text-white font-semibold mb-1">van alle leads wordt nooit opgevolgd</p>
+          <p class="text-sm text-slate-500">De meeste sportscholen sturen 1 mailtje, bellen misschien 1x, en geven dan op. Die leads liggen nog steeds in je systeem.</p>
         </div>
-        <!-- Stat 3 -->
-        <div class="bg-surface-800/50 border border-slate-700/40 rounded-2xl p-8 text-center card-hover">
-          <p class="text-4xl md:text-5xl font-800 text-accent tracking-tight mb-2">90%+</p>
-          <p class="text-slate-400">open rate via WhatsApp</p>
-          <p class="text-xs text-slate-600 mt-1">vs. 20% bij e-mail</p>
+
+        <div class="fade-up stagger-3 bg-surface-900 p-8 md:p-10">
+          <p class="text-4xl md:text-5xl font-800 tracking-tight text-white mb-2">
+            <span class="counter-value" data-count-to="1500" data-count-prefix="€500-" data-count-separator=".">€500-1.500</span>
+          </p>
+          <p class="text-white font-semibold mb-1">lifetime value per lid</p>
+          <p class="text-sm text-slate-500">Elk teruggewonnen lid levert honderden tot meer dan duizend euro op in lidmaatschapsgeld en extra diensten.</p>
         </div>
+
+        <div class="fade-up stagger-4 bg-surface-900 p-8 md:p-10">
+          <p class="text-4xl md:text-5xl font-800 tracking-tight text-white mb-2">
+            <span class="counter-value" data-count-to="40" data-count-suffix="%" data-count-prefix="30-">30-40%</span>
+          </p>
+          <p class="text-white font-semibold mb-1">jaarlijks ledenverloop</p>
+          <p class="text-sm text-slate-500">Dat betekent: bij 500 leden verlies je elk jaar 150-200 leden. Die contacten heb je nog. Je gebruikt ze alleen niet.</p>
+        </div>
+
       </div>
 
-      <!-- Rekenvoorbeeld -->
-      <div class="fade-up mt-12 bg-surface-800/30 border border-slate-700/30 rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
-        <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Doorgerekend</p>
-        <h3 class="text-xl md:text-2xl font-700 tracking-tight text-white mb-6">30 offertes per maand &times; &euro;15.000 gemiddeld</h3>
-        <div class="space-y-4">
-          <!-- Zonder -->
-          <div class="flex items-center justify-between py-3 border-b border-slate-700/30">
-            <div>
-              <p class="text-slate-400 text-sm">Zonder opvolging</p>
-              <p class="text-slate-500 text-xs mt-0.5">25% sluit &rarr; 7 projecten</p>
-            </div>
-            <p class="text-slate-400 font-semibold text-lg">&euro;105.000</p>
-          </div>
-          <!-- Met -->
-          <div class="flex items-center justify-between py-3 border-b border-slate-700/30">
-            <div>
-              <p class="text-white text-sm font-medium">Met De Offerte-Assistent</p>
-              <p class="text-slate-500 text-xs mt-0.5">35% sluit &rarr; 10 projecten</p>
-            </div>
-            <p class="text-white font-semibold text-lg">&euro;150.000</p>
-          </div>
-          <!-- Verschil -->
-          <div class="flex items-center justify-between pt-2">
-            <p class="text-accent font-semibold">Extra omzet per maand</p>
-            <p class="text-accent font-800 text-2xl">+&euro;45.000</p>
-          </div>
-        </div>
-      </div>
+      <p class="text-xs text-slate-600 mt-6">Bronnen: EuropeActive, IHRSA, WhatsApp Business Platform data</p>
     </div>
   </section>
 
@@ -430,107 +528,109 @@
   <!-- ============================================ -->
   <!-- SECTION 4: REASONS WHY                       -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-28 bg-surface-900/50">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="fade-up mb-16">
-        <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Waarom Nurtureflow</p>
-        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white max-w-2xl">
-          Waarom renovatiebedrijven kiezen voor De Offerte-Assistent
+      <div class="fade-up mb-14">
+        <p class="text-sm text-accent font-medium uppercase tracking-wider mb-3">Waarom De Comeback Campagne</p>
+        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white max-w-[600px]">
+          7 redenen waarom sportscholen hiervoor kiezen
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      <div class="space-y-0 divide-y divide-white/[0.04]">
 
-        <!-- Reason 1 -->
-        <div class="fade-up stagger-1">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-2">Opvolging via WhatsApp, waar klanten daadwerkelijk reageren</h3>
-              <p class="text-slate-400 leading-relaxed max-w-[55ch]">
-                Geen e-mails die in spam belanden. Jouw offertes worden opgevolgd via WhatsApp, met een open rate van meer dan 90%. Klanten reageren sneller, en jij sluit sneller.
-              </p>
-            </div>
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">01</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">Betaal alleen per geboekte afspraak</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">Geen retainer. Geen advertentiebudget. Geen opzetkosten. Pas wanneer er een bevestigde afspraak in jouw agenda staat, betaal je. Nul risico.</p>
           </div>
         </div>
 
-        <!-- Reason 2 -->
-        <div class="fade-up stagger-2">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-2">Persoonlijke berichten, geen standaard templates</h3>
-              <p class="text-slate-400 leading-relaxed max-w-[55ch]">
-                Elke klant krijgt een bericht dat past bij hun specifieke situatie en offerte. Geen "Beste heer/mevrouw" kopieerwerk. Het voelt alsof jij het zelf hebt getypt.
-              </p>
-            </div>
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">02</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">WhatsApp, niet e-mail</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">97% van Nederland zit op WhatsApp. Open rates van 90-98% tegenover 18-25% bij e-mail. Jouw bericht wordt niet alleen gezien, het wordt ook beantwoord.</p>
           </div>
         </div>
 
-        <!-- Reason 3 -->
-        <div class="fade-up stagger-3">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-2">Beantwoordt vragen van klanten namens jou</h3>
-              <p class="text-slate-400 leading-relaxed max-w-[55ch]">
-                Klant vraagt iets over de offerte? De Offerte-Assistent beantwoordt veelgestelde vragen direct, zodat het gesprek warm blijft. Geen vertraging, geen radiostilte.
-              </p>
-            </div>
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">03</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">Persoonlijk, niet spammy</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">Elk bericht wordt op maat geschreven. Geen kopieer-plak, geen bulk-blast. Het voelt alsof jij ze persoonlijk even appt — omdat dat ook precies is wat er gebeurt.</p>
           </div>
         </div>
 
-        <!-- Reason 4 -->
-        <div class="fade-up stagger-4">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-2">Slim seintje wanneer jij moet bellen</h3>
-              <p class="text-slate-400 leading-relaxed max-w-[55ch]">
-                Niet alles kan automatisch. Wanneer een klant echt persoonlijke aandacht nodig heeft, krijg jij een melding met alle context. Zo bel je op het perfecte moment, met de juiste informatie.
-              </p>
-            </div>
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">04</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">Resultaat binnen 14 dagen</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">Geen maanden wachten op SEO. Geen onzekere "brand awareness" campagnes. De eerste afspraken staan doorgaans binnen twee weken in je agenda.</p>
           </div>
         </div>
 
-        <!-- Reason 5 -->
-        <div class="fade-up stagger-5">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-2">Werkt met je huidige tools, geen gedoe</h3>
-              <p class="text-slate-400 leading-relaxed max-w-[55ch]">
-                De Offerte-Assistent sluit aan op de systemen die je al gebruikt. Geen extra software leren, geen dubbel werk. Het draait gewoon mee op de achtergrond.
-              </p>
-            </div>
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">05</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">Wij doen al het werk</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">Jij runt je sportschool. Wij schrijven de berichten, benaderen je contacten, en boeken de afspraken in. Het enige wat jij doet: het gesprek voeren met een gemotiveerd oud-lid.</p>
           </div>
         </div>
 
-        <!-- Reason 6 -->
-        <div class="fade-up stagger-6">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex-shrink-0 flex items-center justify-center mt-0.5">
-              <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-2">Binnen 2 weken live en draaiend</h3>
-              <p class="text-slate-400 leading-relaxed max-w-[55ch]">
-                Geen maandenlange implementatie. We zetten alles voor je klaar en binnen twee weken is De Offerte-Assistent actief en begint hij voor je te werken.
-              </p>
-            </div>
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">06</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">Gebruik wat je al hebt</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">Je hebt al betaald om die leden en leads binnen te halen. Ze zitten in je CRM, je Excel-sheet, of je oude administratie. Die database is geld op de plank. Wij helpen je het eraf te halen.</p>
           </div>
         </div>
 
+        <div class="fade-up grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8">
+          <div class="md:col-span-1">
+            <span class="text-sm font-semibold text-accent">07</span>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-xl font-600 text-white">Geen contract, geen minimale looptijd</h3>
+          </div>
+          <div class="md:col-span-7">
+            <p class="text-slate-400 leading-relaxed">Je zit nergens aan vast. Blij met de resultaten? We draaien de volgende campagne. Niet tevreden? Je stopt wanneer je wilt. Zo simpel.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="fade-up mt-14">
+        <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+          Start Met De Comeback Campagne
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -539,72 +639,75 @@
   <!-- ============================================ -->
   <!-- SECTION 5: COMPARISON TABLE                  -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-28">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="fade-up mb-16">
-        <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Vergelijk</p>
-        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white max-w-2xl">
-          Wat zijn je opties?
+      <div class="fade-up mb-14">
+        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white max-w-[600px]">
+          Hoe verhoudt dit zich tot je alternatieven?
         </h2>
       </div>
 
-      <div class="fade-up overflow-x-auto">
-        <table class="w-full min-w-[640px]">
+      <div class="fade-up overflow-x-auto rounded-2xl border border-white/[0.04]">
+        <table class="w-full min-w-[640px] text-left">
           <thead>
-            <tr class="border-b border-slate-700/50">
-              <th class="text-left py-4 pr-6 text-slate-500 font-medium text-sm w-1/4"></th>
-              <th class="text-left py-4 px-6 text-slate-400 font-medium text-sm w-1/4">Zelf opvolgen</th>
-              <th class="text-left py-4 px-6 text-slate-400 font-medium text-sm w-1/4">Iemand inhuren</th>
-              <th class="text-left py-4 px-6 text-sm w-1/4">
-                <span class="text-accent font-semibold">De Offerte-Assistent</span>
-              </th>
+            <tr class="border-b border-white/[0.04]">
+              <th class="p-5 text-sm font-medium text-slate-500 bg-surface-900 w-1/4"></th>
+              <th class="p-5 text-sm font-medium text-slate-500 bg-surface-900 w-1/4">Traditioneel bureau</th>
+              <th class="p-5 text-sm font-medium text-slate-500 bg-surface-900 w-1/4">Zelf doen</th>
+              <th class="p-5 text-sm font-medium text-accent bg-surface-800 w-1/4 winner-col rounded-tl-lg">De Comeback Campagne</th>
             </tr>
           </thead>
-          <tbody class="text-sm">
-            <tr class="compare-row border-b border-slate-800/50">
-              <td class="py-4 pr-6 text-slate-500 font-medium">Snelheid opvolging</td>
-              <td class="py-4 px-6 text-slate-400">Wanneer je eraan denkt</td>
-              <td class="py-4 px-6 text-slate-400">Afhankelijk van beschikbaarheid</td>
-              <td class="py-4 px-6 text-white font-medium">Binnen 1 uur, automatisch</td>
+          <tbody>
+            <tr class="compare-row border-b border-white/[0.03]">
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Kosten vooraf</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">&euro;1.000-2.500/mnd</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Jouw eigen tijd</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col">&euro;0</td>
             </tr>
-            <tr class="compare-row border-b border-slate-800/50">
-              <td class="py-4 pr-6 text-slate-500 font-medium">Personalisatie</td>
-              <td class="py-4 px-6 text-slate-400">Hoog, maar kost veel tijd</td>
-              <td class="py-4 px-6 text-slate-400">Wisselend per persoon</td>
-              <td class="py-4 px-6 text-white font-medium">Altijd persoonlijk en relevant</td>
+            <tr class="compare-row border-b border-white/[0.03]">
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Betaalmodel</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Maandelijks retainer</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Gratis (maar kost uren)</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col">Per afspraak</td>
             </tr>
-            <tr class="compare-row border-b border-slate-800/50">
-              <td class="py-4 pr-6 text-slate-500 font-medium">Consistentie</td>
-              <td class="py-4 px-6 text-slate-400">Schiet er bij in als het druk is</td>
-              <td class="py-4 px-6 text-slate-400">Gaat goed totdat ze ziek zijn</td>
-              <td class="py-4 px-6 text-white font-medium">Elke offerte, elke keer</td>
+            <tr class="compare-row border-b border-white/[0.03]">
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Kanaal</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Meta ads / e-mail</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Bellen, mailen</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col">WhatsApp</td>
             </tr>
-            <tr class="compare-row border-b border-slate-800/50">
-              <td class="py-4 pr-6 text-slate-500 font-medium">Kanaal</td>
-              <td class="py-4 px-6 text-slate-400">Telefoon of e-mail</td>
-              <td class="py-4 px-6 text-slate-400">Telefoon of e-mail</td>
-              <td class="py-4 px-6 text-white font-medium">WhatsApp + e-mail</td>
+            <tr class="compare-row border-b border-white/[0.03]">
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Open rate</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">18-25% (e-mail)</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Wisselend</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col">90-98%</td>
             </tr>
-            <tr class="compare-row border-b border-slate-800/50">
-              <td class="py-4 pr-6 text-slate-500 font-medium">Kosten</td>
-              <td class="py-4 px-6 text-slate-400">Gratis, maar kost jou uren</td>
-              <td class="py-4 px-6 text-slate-400">&euro;2.000+ per maand</td>
-              <td class="py-4 px-6 text-white font-medium">Fractie van de kosten</td>
+            <tr class="compare-row border-b border-white/[0.03]">
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Snelheid</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">1-3 maanden</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Weken/maanden</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col">7-14 dagen</td>
+            </tr>
+            <tr class="compare-row border-b border-white/[0.03]">
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Risico</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Hoog</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Medium</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col">Nul</td>
             </tr>
             <tr class="compare-row">
-              <td class="py-4 pr-6 text-slate-500 font-medium">Garantie</td>
-              <td class="py-4 px-6 text-slate-400">Geen</td>
-              <td class="py-4 px-6 text-slate-400">Geen</td>
-              <td class="py-4 px-6 text-accent font-medium">Resultaat of je betaalt niet</td>
+              <td class="p-5 text-sm font-medium text-slate-400 bg-surface-900">Garantie</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Zelden</td>
+              <td class="p-5 text-sm text-slate-400 bg-surface-900">Geen</td>
+              <td class="p-5 text-sm text-white font-semibold bg-surface-800 winner-col rounded-bl-lg">Betaal alleen bij resultaat</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- CTA -->
-      <div class="fade-up mt-12 text-center">
-        <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
-          Plan Mijn Demo
+      <div class="fade-up mt-14">
+        <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+          Kies Voor Resultaat Zonder Risico
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
       </div>
@@ -612,119 +715,128 @@
   </section>
 
 
-  <!-- Animated divider -->
-  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="h-px animated-line"></div>
-  </div>
-
-
   <!-- ============================================ -->
   <!-- SECTION 6: WHO WE HELP                       -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-28">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
         <div class="fade-up">
-          <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Herken je dit?</p>
-          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white leading-tight mb-6">
+          <p class="text-sm text-accent font-medium uppercase tracking-wider mb-3">Herken je dit?</p>
+          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white mb-6">
             Dit is voor jou als...
           </h2>
-          <p class="text-slate-400 text-lg leading-relaxed max-w-[55ch]">
-            De Offerte-Assistent is gebouwd voor renovatiebedrijven die goed werk leveren, maar weten dat ze omzet laten liggen door slechte opvolging.
+          <p class="text-lg text-slate-400 leading-relaxed">
+            De Comeback Campagne is niet voor iedereen. We werken alleen met sportscholen waar we ook echt resultaat kunnen leveren.
           </p>
         </div>
 
-        <div class="space-y-4">
-          <!-- Bullet 1 -->
-          <div class="fade-up stagger-1 flex items-start gap-4 bg-surface-800/30 border border-slate-700/30 rounded-xl p-5">
-            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            <p class="text-slate-300">Je stuurt regelmatig offertes maar volgt ze niet structureel op</p>
+        <div class="fade-up stagger-2 space-y-0 divide-y divide-white/[0.04]">
+          <div class="flex gap-4 py-5">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-slate-300">Je runt een onafhankelijke sportschool in Nederland</p>
           </div>
-          <!-- Bullet 2 -->
-          <div class="fade-up stagger-2 flex items-start gap-4 bg-surface-800/30 border border-slate-700/30 rounded-xl p-5">
-            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            <p class="text-slate-300">Je weet dat klanten afhaken omdat je te laat reageert</p>
+          <div class="flex gap-4 py-5">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-slate-300">Je hebt een database met oud-leden of leads die je niet meer activeert</p>
           </div>
-          <!-- Bullet 3 -->
-          <div class="fade-up stagger-3 flex items-start gap-4 bg-surface-800/30 border border-slate-700/30 rounded-xl p-5">
-            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            <p class="text-slate-300">Je hebt het te druk met projecten om ook nog commercieel alles bij te houden</p>
+          <div class="flex gap-4 py-5">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-slate-300">Je bent het zat om geld te verbranden aan ads die niks opleveren</p>
           </div>
-          <!-- Bullet 4 -->
-          <div class="fade-up stagger-4 flex items-start gap-4 bg-surface-800/30 border border-slate-700/30 rounded-xl p-5">
-            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            <p class="text-slate-300">Je wilt meer projecten binnenhalen zonder een extra medewerker aan te nemen</p>
+          <div class="flex gap-4 py-5">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-slate-300">Je bent klaar met bureaus die leads beloven maar rommel leveren</p>
           </div>
-          <!-- Bullet 5 -->
-          <div class="fade-up stagger-5 flex items-start gap-4 bg-surface-800/30 border border-slate-700/30 rounded-xl p-5">
-            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            <p class="text-slate-300">Je doet keuken- of badkamerrenovaties en werkt met offertes boven de &euro;5.000</p>
+          <div class="flex gap-4 py-5">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-slate-300">Je wilt groeien zonder vooraf duizenden euro's te investeren</p>
+          </div>
+          <div class="flex gap-4 py-5">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="text-slate-300">Je wilt je focussen op je gym, niet op marketing</p>
           </div>
         </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="fade-up mt-14">
+        <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+          Ja, Dit Ben Ik — Plan Mijn Gesprek
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
 
   <!-- ============================================ -->
-  <!-- SECTION 7: HOW IT WORKS                      -->
+  <!-- SECTION 7: HOW IT WORKS — VERTICAL TIMELINE  -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-28 bg-surface-900/50">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="fade-up mb-16 text-center">
-        <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Hoe het werkt</p>
-        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white">
-          In 3 stappen meer offertes sluiten
+      <div class="fade-up mb-14">
+        <p class="text-sm text-accent font-medium uppercase tracking-wider mb-3">Hoe het werkt</p>
+        <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white max-w-[600px]">
+          Van slapende database naar volle agenda in 3 stappen
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <!-- Vertical timeline -->
+      <div class="relative max-w-[700px]">
+        <!-- Connector line -->
+        <div class="absolute left-5 top-8 bottom-8 w-px timeline-connector hidden md:block"></div>
 
         <!-- Step 1 -->
-        <div class="fade-up stagger-1 relative">
-          <div class="bg-surface-800/50 border border-slate-700/40 rounded-2xl p-8 h-full card-hover">
-            <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5">
-              <span class="text-accent font-bold text-xl">1</span>
+        <div class="fade-up stagger-1 relative grid grid-cols-1 md:grid-cols-[40px_1fr] gap-6 md:gap-8 pb-12">
+          <div class="flex md:flex-col items-center md:items-start gap-4 md:gap-0">
+            <div class="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 relative z-10 bg-surface-950">
+              <span class="text-sm font-700 text-accent">1</span>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-3">Plan je demo</h3>
-            <p class="text-slate-400 leading-relaxed text-sm">
-              In 15 minuten laten we je live zien hoe De Offerte-Assistent werkt voor jouw type renovatiebedrijf. Vrijblijvend.
-            </p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-600 uppercase tracking-wider mb-2">Duurt 15 minuten</p>
+            <h3 class="text-xl font-600 text-white mb-3">Gratis strategiegesprek</h3>
+            <p class="text-slate-400 leading-relaxed">We analyseren jouw database en laten zien hoeveel potentieel erin zit. Je krijgt een eerlijke inschatting — geen verkooppraatje. Past het niet? Dan zeggen we dat.</p>
           </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="fade-up stagger-2 relative">
-          <div class="bg-surface-800/50 border border-slate-700/40 rounded-2xl p-8 h-full card-hover">
-            <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5">
-              <span class="text-accent font-bold text-xl">2</span>
+        <div class="fade-up stagger-2 relative grid grid-cols-1 md:grid-cols-[40px_1fr] gap-6 md:gap-8 pb-12">
+          <div class="flex md:flex-col items-center md:items-start gap-4 md:gap-0">
+            <div class="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 relative z-10 bg-surface-950">
+              <span class="text-sm font-700 text-accent">2</span>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-3">Wij richten alles in</h3>
-            <p class="text-slate-400 leading-relaxed text-sm">
-              We koppelen De Offerte-Assistent aan je bestaande tools en stemmen de berichten af op jouw bedrijf. Binnen 2 weken live.
-            </p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-600 uppercase tracking-wider mb-2">Wij doen het werk</p>
+            <h3 class="text-xl font-600 text-white mb-3">Wij starten De Comeback Campagne</h3>
+            <p class="text-slate-400 leading-relaxed">Wij schrijven persoonlijke WhatsApp-berichten en benaderen jouw oud-leden en onbenutte leads. Jij doet niks — wij regelen alles. Van bericht tot boeking.</p>
           </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="fade-up stagger-3 relative">
-          <div class="bg-surface-800/50 border border-slate-700/40 rounded-2xl p-8 h-full card-hover">
-            <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5">
-              <span class="text-accent font-bold text-xl">3</span>
+        <div class="fade-up stagger-3 relative grid grid-cols-1 md:grid-cols-[40px_1fr] gap-6 md:gap-8">
+          <div class="flex md:flex-col items-center md:items-start gap-4 md:gap-0">
+            <div class="w-10 h-10 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 relative z-10 bg-surface-950">
+              <span class="text-sm font-700 text-accent">3</span>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-3">Sluit meer offertes</h3>
-            <p class="text-slate-400 leading-relaxed text-sm">
-              De Offerte-Assistent volgt elke offerte op. Jij krijgt een seintje wanneer het tijd is om te bellen. Meer projecten, minder stress.
-            </p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-600 uppercase tracking-wider mb-2">Binnen 14 dagen</p>
+            <h3 class="text-xl font-600 text-white mb-3">Afspraken in je agenda</h3>
+            <p class="text-slate-400 leading-relaxed">Ge&iuml;nteresseerde oud-leden worden ingeboekt als afspraken. Jij voert het gesprek met iemand die jouw gym al kent en gemotiveerd is om terug te komen.</p>
           </div>
         </div>
+
       </div>
 
       <!-- CTA -->
-      <div class="fade-up mt-12 text-center">
-        <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
-          Plan Mijn Demo
+      <div class="fade-up mt-14">
+        <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+          Begin Met Stap 1
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
       </div>
@@ -735,62 +847,66 @@
   <!-- ============================================ -->
   <!-- SECTION 8: OFFER BLOCK                       -->
   <!-- ============================================ -->
-  <section id="demo" class="py-20 md:py-28">
+  <section id="gesprek" class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="fade-up max-w-2xl mx-auto">
-        <div class="bg-surface-800 border border-accent/20 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-          <!-- Subtle glow -->
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-accent/5 blur-[100px] rounded-full"></div>
+      <div class="fade-up max-w-[800px] mx-auto">
 
-          <div class="relative z-10">
-            <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Gratis demo</p>
-            <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white leading-tight mb-4">
-              Ontdek hoe jij 2&ndash;4 extra offertes per maand sluit
-            </h2>
-            <p class="text-slate-400 text-lg leading-relaxed mb-8 max-w-[50ch]">
-              In 15 minuten laten we je live zien hoe De Offerte-Assistent jouw offertes opvolgt via WhatsApp en e-mail. Persoonlijk, automatisch, en op het juiste moment.
-            </p>
+        <div class="bg-surface-800 glass-card rounded-2xl p-8 md:p-12">
 
-            <!-- What you get -->
-            <div class="space-y-3 mb-8">
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-slate-300">Live demonstratie afgestemd op jouw bedrijf</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-slate-300">Direct inzicht in hoeveel omzet je laat liggen</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span class="text-slate-300">Concreet plan hoe we jouw opvolging automatiseren</span>
-              </div>
+          <p class="text-sm text-accent font-medium uppercase tracking-wider mb-2">De Comeback Campagne</p>
+          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white mb-4">
+            Ontdek hoeveel omzet er in jouw slapende database zit
+          </h2>
+          <p class="text-lg text-slate-400 leading-relaxed mb-8">
+            Plan een gratis strategiegesprek van 15 minuten. We analyseren jouw database en laten zien hoeveel oud-leden en leads je kunt heractiveren — zonder dat het je iets kost.
+          </p>
+
+          <div class="h-px bg-white/[0.04] mb-8"></div>
+
+          <!-- What you get -->
+          <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">Wat je krijgt in dit gesprek</h3>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">Analyse van jouw bestaande database en het heractivatiepotentieel</span>
             </div>
-
-            <!-- Guarantee -->
-            <div class="bg-accent/5 border border-accent/10 rounded-xl px-5 py-4 mb-8">
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-                <p class="text-slate-300 text-sm">
-                  <span class="text-white font-medium">Onze garantie:</span> Sluit je niet minimaal 2 extra offertes per maand? Dan betaal je niets. Zo simpel is het.
-                </p>
-              </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">Inschatting van het aantal afspraken dat we kunnen boeken</span>
             </div>
-
-            <!-- CTA -->
-            <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn w-full md:w-auto inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
-              Plan Mijn Demo
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-            <div class="flex items-center gap-4 mt-3 text-sm text-slate-500">
-              <span>Gratis</span>
-              <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-              <span>15 minuten</span>
-              <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-              <span>Vrijblijvend</span>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">Uitleg hoe De Comeback Campagne precies werkt voor jouw sportschool</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">Eerlijk advies — past het niet? Dan zeggen we dat</span>
             </div>
           </div>
+
+          <!-- CTA -->
+          <a href="https://calendly.com/justin-nurtureflow/comeback-campagne" target="_blank" rel="noopener" class="cta-btn w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+            Plan Je Gratis Strategiegesprek
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+
+          <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-4 text-sm text-slate-500">
+            <span>15 minuten</span>
+            <span class="hidden sm:inline text-slate-700">|</span>
+            <span>100% gratis</span>
+            <span class="hidden sm:inline text-slate-700">|</span>
+            <span>Geen verplichtingen</span>
+          </div>
+
+          <!-- Guarantee -->
+          <div class="mt-8 p-4 rounded-xl bg-accent/5 border border-accent/10">
+            <p class="text-sm text-slate-400 text-center">
+              <span class="text-accent font-semibold">Onze garantie:</span> Je betaalt pas wanneer er bevestigde afspraken in je agenda staan. Geen resultaat = geen kosten. Punt.
+            </p>
+          </div>
+
         </div>
+
       </div>
     </div>
   </section>
@@ -799,119 +915,102 @@
   <!-- ============================================ -->
   <!-- SECTION 9: FAQ                               -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-28 bg-surface-900/50">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto">
-        <div class="fade-up mb-12 text-center">
-          <p class="text-accent font-medium text-sm tracking-wide uppercase mb-4">Veelgestelde vragen</p>
-          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white">
-            Nog vragen? We hebben antwoorden.
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+        <!-- Left: heading -->
+        <div class="lg:col-span-4 fade-up">
+          <p class="text-sm text-accent font-medium uppercase tracking-wider mb-3">Veelgestelde vragen</p>
+          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white mb-4">
+            Nog vragen? Hier zijn de antwoorden.
           </h2>
+          <p class="text-slate-400 leading-relaxed">
+            Staat jouw vraag er niet bij? Stel 'm in het gratis strategiegesprek.
+          </p>
         </div>
 
-        <div class="space-y-2">
+        <!-- Right: FAQ items -->
+        <div class="lg:col-span-8 space-y-0 divide-y divide-white/[0.04]">
 
-          <!-- FAQ 1 -->
-          <div class="fade-up stagger-1 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Hoe snel zie ik resultaat?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Is dit geen spam?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Binnen 2 weken is het systeem live. Vanaf dat moment wordt elke nieuwe offerte automatisch opgevolgd. De meeste klanten zien binnen de eerste maand al verschil in hun sluitingspercentage.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">Nee. Elk bericht is persoonlijk geschreven en afgestemd op de ontvanger. We sturen geen bulk-berichten. Ontvangers kunnen altijd aangeven dat ze niet meer benaderd willen worden, en dan stoppen we direct.</p>
             </div>
           </div>
 
-          <!-- FAQ 2 -->
-          <div class="fade-up stagger-2 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Wat als het niet werkt voor mijn bedrijf?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Mag dit van de AVG/GDPR?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Simpel: dan betaal je niet. Onze garantie is helder. Sluit je niet minimaal 2 extra offertes per maand, dan zijn er geen kosten. Het risico ligt bij ons, niet bij jou.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">Ja. Voor oud-leden en eerdere leads geldt "gerechtvaardigd belang" als grondslag. We bieden altijd een duidelijke opt-out en houden ons strikt aan de privacywetgeving. Elk bericht is relevant en persoonlijk — geen massa-marketing.</p>
             </div>
           </div>
 
-          <!-- FAQ 3 -->
-          <div class="fade-up stagger-3 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Merken mijn klanten dat het automatisch is?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Wat als mijn database een rommeltje is?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Nee. Elk bericht is persoonlijk en afgestemd op de specifieke offerte en klant. Het voelt alsof jij of een medewerker het bericht zelf hebt getypt. Klanten ervaren het als attente, snelle service.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">Geen probleem. De meeste sportscholen hebben hun contacten verspreid over Excel-sheets, oude CRM-systemen, of zelfs papieren administratie. Wij helpen je om de data te ordenen en de beste kandidaten te selecteren.</p>
             </div>
           </div>
 
-          <!-- FAQ 4 -->
-          <div class="fade-up stagger-4 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Moet ik mijn werkwijze aanpassen?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Hoe snel zie ik resultaat?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Nee. De Offerte-Assistent sluit aan op je huidige manier van werken en de tools die je al gebruikt. Je hoeft geen nieuwe software te leren. Wij passen ons aan jou aan, niet andersom.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">De meeste campagnes leveren binnen 7-14 dagen de eerste geboekte afspraken op. WhatsApp-berichten worden vrijwel direct gelezen en beantwoord, dus de reactiesnelheid is veel hoger dan bij e-mail of advertenties.</p>
             </div>
           </div>
 
-          <!-- FAQ 5 -->
-          <div class="fade-up stagger-5 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Wat kost het na de demo?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Wat als het niet werkt?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Dat bespreken we in de demo, omdat het afhangt van jouw situatie en volume. Wat we wel kunnen zeggen: het is een fractie van wat een extra medewerker kost, en je betaalt pas als je resultaat ziet.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">Dan betaal je niks. Je betaalt uitsluitend per bevestigde, geboekte afspraak. Geen afspraken = geen kosten. Het risico ligt volledig bij ons, niet bij jou.</p>
             </div>
           </div>
 
-          <!-- FAQ 6 -->
-          <div class="fade-up stagger-6 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Werkt dit ook als ik maar een paar offertes per maand verstuur?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Hoeveel afspraken kan ik verwachten?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Juist dan is elke offerte extra waardevol. Als je 5 offertes per maand stuurt en er 1 extra sluit, heb je het er al uit. In de demo kijken we samen of het voor jouw volume zinvol is.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">Dat hangt af van de grootte en kwaliteit van je database. Industrie-data laat zien dat 15-25% van aangeschreven oud-leden reageert op een persoonlijke WhatsApp-campagne. In het strategiegesprek geven we een realistische inschatting op basis van jouw specifieke situatie.</p>
             </div>
           </div>
 
-          <!-- FAQ 7 -->
-          <div class="fade-up stagger-7 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Hoe verschilt dit van een CRM met automatische e-mails?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Moet ik een lang contract tekenen?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                CRM-mails zijn generieke templates die in de inbox (of spam) belanden. De Offerte-Assistent stuurt persoonlijke berichten via WhatsApp, beantwoordt vragen, en weet wanneer jij persoonlijk moet bellen. Het is het verschil tussen een mailing en een gesprek.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">Nee. Geen contract, geen minimale looptijd. We werken per campagne. Blij met de resultaten? Dan draaien we de volgende. Niet tevreden? Je stopt wanneer je wilt.</p>
             </div>
           </div>
 
-          <!-- FAQ 8 -->
-          <div class="fade-up stagger-8 faq-item border border-slate-700/40 rounded-xl overflow-hidden">
-            <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <span class="text-white font-medium pr-4">Wat als ik al iemand heb die opvolgt?</span>
-              <svg class="faq-chevron w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          <div class="fade-up faq-item">
+            <button class="w-full flex items-center justify-between gap-4 py-5 text-left" onclick="this.parentElement.classList.toggle('open')">
+              <span class="text-white font-medium">Waarom WhatsApp en niet e-mail of bellen?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="faq-answer">
-              <p class="px-6 pb-5 text-slate-400 leading-relaxed">
-                Dan is De Offerte-Assistent een versterking, geen vervanging. Het systeem pakt de eerste opvolging en vragen op, zodat jouw medewerker zich kan focussen op de klanten die echt klaar zijn om te beslissen.
-              </p>
+              <p class="pb-5 text-slate-400 leading-relaxed">97% van Nederland gebruikt WhatsApp dagelijks. De open rate is 90-98%, tegenover 18-25% bij e-mail. Het voelt persoonlijk, niet als marketing. En het wordt binnen minuten gelezen — niet na dagen of nooit.</p>
             </div>
           </div>
 
@@ -924,51 +1023,51 @@
   <!-- ============================================ -->
   <!-- SECTION 10: PAGE FULL STOP                   -->
   <!-- ============================================ -->
-  <section class="py-20 md:py-32">
+  <section class="relative py-20 md:py-28 border-t border-white/[0.04]">
     <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="fade-up max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-5xl font-800 tracking-tighter text-white leading-tight mb-6">
-          Elke dag zonder opvolging kost je projecten
-        </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-8">
-          <span class="flex items-center gap-2 text-slate-300">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            WhatsApp — 90%+ open rate
-          </span>
-          <span class="flex items-center gap-2 text-slate-300">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            Persoonlijke berichten
-          </span>
-          <span class="flex items-center gap-2 text-slate-300">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            Binnen 2 weken live
-          </span>
-          <span class="flex items-center gap-2 text-slate-300">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            Resultaat of je betaalt niet
-          </span>
-          <span class="flex items-center gap-2 text-slate-300">
-            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
-            Werkt met je tools
-          </span>
+        <div class="fade-up">
+          <h2 class="text-3xl md:text-4xl font-700 tracking-tighter text-white mb-6">
+            Elke dag dat jouw database stof vangt, loop je omzet mis
+          </h2>
+
+          <p class="text-lg text-slate-400 leading-relaxed mb-8">
+            Jouw concurrenten worden steeds agressiever. Elke oud-lid dat jij niet terughaalt, is een lid dat naar Basic-Fit of de sportschool om de hoek gaat. Je hebt de contacten. Je hebt het vertrouwen. Het enige wat ontbreekt is het berichtje.
+          </p>
+
+          <a href="#gesprek" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
+            Claim Je Gratis Gesprek
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <p class="text-sm text-slate-500 mt-3">15 minuten. Gratis. Geen verplichtingen.</p>
         </div>
 
-        <p class="text-slate-400 text-lg mb-8 max-w-[50ch] mx-auto">
-          Terwijl jij dit leest, stuurt je concurrent al een opvolgbericht naar jullie gedeelde lead. Wacht niet tot morgen.
-        </p>
-
-        <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-4 rounded-xl text-lg">
-          Plan Mijn Demo
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-        <div class="flex items-center justify-center gap-4 mt-3 text-sm text-slate-500">
-          <span>Gratis</span>
-          <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-          <span>15 minuten</span>
-          <span class="w-1 h-1 rounded-full bg-slate-700"></span>
-          <span>Vrijblijvend</span>
+        <div class="fade-up stagger-2">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">5-10x goedkoper dan nieuwe leden werven via ads</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">90-98% open rate — het hoogste van alle kanalen</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">Eerste afspraken binnen 14 dagen</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">&euro;0 vooraf — betaal alleen per geboekte afspraak</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-slate-300">Geen contract, geen retainer, nul risico</span>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -977,13 +1076,10 @@
   <!-- ============================================ -->
   <!-- FOOTER                                       -->
   <!-- ============================================ -->
-  <footer class="border-t border-slate-800/50 py-8">
-    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-slate-500 text-sm">&copy; 2026 Nurtureflow. Alle rechten voorbehouden.</p>
-      <div class="flex items-center gap-6 text-sm text-slate-500">
-        <a href="#" class="hover:text-slate-300 transition-colors">Privacybeleid</a>
-        <a href="#" class="hover:text-slate-300 transition-colors">Voorwaarden</a>
-      </div>
+  <footer class="border-t border-white/[0.04] py-10">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <img src="nurtureflow-logo.svg" alt="NurtureFlow" class="h-6 opacity-50">
+      <p class="text-sm text-slate-600">&copy; 2026 NurtureFlow. Alle rechten voorbehouden.</p>
     </div>
   </footer>
 
@@ -991,10 +1087,10 @@
   <!-- ============================================ -->
   <!-- STICKY MOBILE CTA                            -->
   <!-- ============================================ -->
-  <div id="sticky-cta" class="sticky-cta fixed bottom-0 left-0 right-0 z-40 bg-surface-950/90 backdrop-blur-md border-t border-slate-800/50 p-4 md:hidden">
-    <a href="https://calendly.com/justin-nurtureflow/demo-gesprek" target="_blank" rel="noopener" class="cta-btn flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold w-full py-3.5 rounded-xl">
-      Plan Mijn Demo
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+  <div class="sticky-cta fixed bottom-0 left-0 right-0 z-40 bg-surface-950/95 backdrop-blur-md border-t border-white/[0.04] p-4 sm:hidden">
+    <a href="#gesprek" class="cta-btn w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-xl">
+      Plan Gratis Gesprek
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
     </a>
   </div>
 
@@ -1003,7 +1099,7 @@
   <!-- SCRIPTS                                      -->
   <!-- ============================================ -->
   <script>
-    // Intersection Observer for fade-up animations
+    // Scroll-triggered fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1011,15 +1107,12 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Sticky mobile CTA — show after scrolling past hero
-    const stickyCta = document.getElementById('sticky-cta');
+    // Sticky mobile CTA: show after scrolling past hero
+    const stickyCta = document.querySelector('.sticky-cta');
     const heroSection = document.querySelector('section');
 
     const stickyObserver = new IntersectionObserver((entries) => {
@@ -1032,18 +1125,24 @@
       });
     }, { threshold: 0 });
 
-    stickyObserver.observe(heroSection);
+    if (heroSection && stickyCta) {
+      stickyObserver.observe(heroSection);
+    }
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Animated number counters
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const finalText = el.textContent;
+          el.classList.add('counting');
+          setTimeout(() => el.classList.remove('counting'), 600);
+          counterObserver.unobserve(el);
         }
       });
-    });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-value').forEach(el => counterObserver.observe(el));
   </script>
 
 </body>
